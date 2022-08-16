@@ -12,7 +12,7 @@ sock.bind((host, port))
 def handle_clients(connection, address):
     name = connection.recv(1024).decode()
     welcome = "Welcome " + name + ". You can type #quite if you event want to leave the Chat Room"
-    connection.recv(bytes(welcome, "UTF8"))
+    connection.send(bytes(welcome, "UTF8"))
     msg = name + " Has recently joined the Chat Room"
     broadcast(bytes(msg, "UTF8"))
     clients[connection] = name
